@@ -21,14 +21,19 @@ def add_record(d):
     phone = input('Phone: ')
     address = input('Address: ')
 
+    duplicate = False
+
     for pid in d:
         if firstname == d[pid].get('First name') and lastname == d[pid].get('Last name'):
-            print('The contact is already in the phone book') # BUG 1 - Doesnt break if contact already exist
-            break
-        else:
-            d[len(d)] = {'First name': firstname, 'Last name': lastname, 'Phone': phone, 'Address': address}
-            print('The contact has been added to the phone book')
-            return d
+            duplicate = True
+
+    if duplicate == True:
+        print('\n# The contact is already in the phone book')
+    else:
+        d[len(d)] = {'First name': firstname, 'Last name': lastname, 'Phone': phone, 'Address': address}
+        print('\n# The contact has been added to the phone book')
+
+    return d
 
 # Delete a record from the phone book using the combination First name and Last name.
 def delete_record(d):
@@ -39,9 +44,9 @@ def delete_record(d):
     for pid in d:
         if firstname == d[pid].get('First name') and lastname == d[pid].get('Last name'):
             del d[pid]
-            print('The contact has been deleted')
+            print('\n# The contact has been deleted')
             return d
-    print('The contact is not in the phone book')
+    print('\n# The contact is not in the phone book')
 
 # Check if a person is already in your phone book using the combination First name and Last name.
 def check_record(d):
@@ -51,9 +56,9 @@ def check_record(d):
 
     for pid in d:
         if firstname == d[pid].get('First name') and lastname == d[pid].get('Last name'):
-            print('The contact is already in the phone book')
+            print('\n# The contact is already in the phone book')
             return d
-    print('The contact is not in the phone book')
+    print('\n# The contact is not in the phone book')
 
 # Change a specific entry of a record.
 def change_entry_in_record(d):
@@ -72,17 +77,21 @@ def change_entry_in_record(d):
 
             if entry == 1:
                 d[pid]['First name'] = input('Enter a new first name: ')
+                print('\n# First name has been changed')
             elif entry == 2:
                 d[pid]['Last name'] = input('Enter a new last name: ')
+                print('\n# Last name has been changed')
             elif entry == 3:
                 d[pid]['Phone'] = input('Enter a new phone number: ')
+                print('\n# Phone number has been changed')
             elif entry == 4:
                 d[pid]['Adress'] = input('Enter a new address: ')
+                print('\n# Address has been changed')
             else:
-                print('404 - Page cannot be found')
+                print('\n# 404 - Page cannot be found')
 
             return d
-    print('The contact is not in the phone book')
+    print('# The contact is not in the phone book')
 
 # List the people in your phone book ordered by First name.
 def ordered_list_by_first_name(d):
@@ -106,7 +115,7 @@ def ordered_list_by_last_name(d):
 
 # Check if there are records having the same phone number and list them.
 def check_for_duplicate_phone_numbers(d):
-    print('This function is under maintenance. Please try again later.')
+    print('# This function is under maintenance. Please try again later.')
     return d
 
 # Main function where we create menu and receive input
@@ -144,9 +153,9 @@ Please enter your choice: """)
         elif selection == '8':
             check_for_duplicate_phone_numbers(phonebook)
         elif selection == '9':
-            print('BOOM!')
+            print('# BOOM!')
             return False
         else:
-            print('404 - Page cannot be found')
+            print('\n# 404 - Page cannot be found')
 
 mainmenu()
