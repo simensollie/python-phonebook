@@ -68,23 +68,23 @@ def change_entry_in_record(d):
 
     for pid in d:
         if firstname == d[pid].get('First name') and lastname == d[pid].get('Last name'):
-            print("We have located your friend. Please enter which entry you'd like to change.\n"
+            print("\n# We have located your friend. Please enter which entry you'd like to change.\n"
                   "1: First name\n"
                   "2: Last name\n"
                   "3: Phone number\n"
                   "4: Address")
-            entry = input("Enter a number between 1-4: ") # BUG 2 - 404 Doesnt register which selection I've made
+            entry = input("Enter a number between 1-4: ")
 
-            if entry == 1:
+            if entry == '1':
                 d[pid]['First name'] = input('Enter a new first name: ')
                 print('\n# First name has been changed')
-            elif entry == 2:
+            elif entry == '2':
                 d[pid]['Last name'] = input('Enter a new last name: ')
                 print('\n# Last name has been changed')
-            elif entry == 3:
+            elif entry == '3':
                 d[pid]['Phone'] = input('Enter a new phone number: ')
                 print('\n# Phone number has been changed')
-            elif entry == 4:
+            elif entry == '4':
                 d[pid]['Adress'] = input('Enter a new address: ')
                 print('\n# Address has been changed')
             else:
