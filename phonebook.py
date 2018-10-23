@@ -1,33 +1,37 @@
-import sys
 
-# Nested dictionary (phone book) with example entries
+
+""" Nested dictionary (phone book) with example entries. """
 phonebook = {0: {'First name': 'Matt', 'Last name': 'Damon', 'Phone': '95487621', 'Address': 'Celeb Street 34'},
              1: {'First name': 'Ben', 'Last name': 'Affleck', 'Phone': '47516448', 'Address': 'Celeb Street 56'},
              2: {'First name': 'Jimmy', 'Last name': 'Kimmel', 'Phone': '41785435', 'Address': 'Celeb Street 49'},
              3: {'First name': 'Sarah', 'Last name': 'Silverman', 'Phone': '41785435', 'Address': 'Celeb Street 13'}}
 
-# List the people in your phone book
+
 def list_phonebook(d):
+    """ List the people in your phone book. """
+
     for pid in d:
         print('\nPID:', pid + 1)
         for p_info in d[pid]:
             print(p_info + ':', d[pid][p_info])
 
-# Add a new record to the phone book that avoids to add duplicates.
+
 def add_record(d):
-    print("Enter the information of the person you'd like to add")
+    """ Add a new record to the phone book that avoids to add duplicates. """
+
+    print("\nEnter the information of the person you'd like to add")
     firstname = input('First name: ')
     lastname = input('Last name: ')
     phone = input('Phone: ')
     address = input('Address: ')
 
-    duplicate = False
+    name_is_equal = False
 
     for pid in d:
         if firstname == d[pid].get('First name') and lastname == d[pid].get('Last name'):
-            duplicate = True
+            name_is_equal = True
 
-    if duplicate == True:
+    if name_is_equal is True:
         print('\n# The contact is already in the phone book')
     else:
         d[len(d)] = {'First name': firstname, 'Last name': lastname, 'Phone': phone, 'Address': address}
@@ -35,9 +39,11 @@ def add_record(d):
 
     return d
 
-# Delete a record from the phone book using the combination First name and Last name.
+
 def delete_record(d):
-    print("Enter the name of the person you'd like to remove")
+    """ Delete a record from the phone book using the combination First name and Last name. """
+
+    print("\nEnter the name of the person you'd like to remove")
     firstname = input('First name: ')
     lastname = input('Last name: ')
 
@@ -48,9 +54,11 @@ def delete_record(d):
             return d
     print('\n# The contact is not in the phone book')
 
-# Check if a person is already in your phone book using the combination First name and Last name.
+
 def check_record(d):
-    print("Enter the name of the person you'd like to check")
+    """ Check if a person is already in your phone book using the combination First name and Last name. """
+
+    print("\nEnter the name of the person you'd like to check")
     firstname = input('First name: ')
     lastname = input('Last name: ')
 
@@ -60,9 +68,11 @@ def check_record(d):
             return d
     print('\n# The contact is not in the phone book')
 
-# Change a specific entry of a record.
+
 def change_entry_in_record(d):
-    print("Enter the name of the person for which you'd like to change information")
+    """ Change a specific entry of a record. """
+
+    print("\nEnter the name of the person for which you'd like to change information")
     firstname = input('First name: ')
     lastname = input('Last name: ')
 
@@ -93,33 +103,41 @@ def change_entry_in_record(d):
             return d
     print('# The contact is not in the phone book')
 
-# List the people in your phone book ordered by First name.
+
 def ordered_list_by_first_name(d):
-    ordered_d = dict(sorted(d.items(), key=lambda pid: pid[1]['First name']))
+    """ List the people in your phone book ordered by First name. """
 
-    print("Phone book ordered by first name: ")
+    ordered_d = dict(sorted(d.items(), key=lambda x: x[1]['First name']))
+
+    print("\nPhone book ordered by first name: ")
     for pid, info in ordered_d.items():
         print('\nPerson number: ', pid)
         for key in info:
             print(key + ':', info[key])
 
-# List the people in your phone book ordered by Last name.
+
 def ordered_list_by_last_name(d):
-    ordered_d = dict(sorted(d.items(), key=lambda pid: pid[1]['Last name']))
+    """ List the people in your phone book ordered by Last name. """
 
-    print("Phone book ordered by last name: ")
+    ordered_d = dict(sorted(d.items(), key=lambda x: x[1]['Last name']))
+
+    print("\nPhone book ordered by last name: ")
     for pid, info in ordered_d.items():
         print('\nPerson number: ', pid)
         for key in info:
             print(key + ':', info[key])
 
-# Check if there are records having the same phone number and list them.
+
 def check_for_duplicate_phone_numbers(d):
+    """ Check if there are records having the same phone number and list them. """
+
     print('# This function is under maintenance. Please try again later.')
     return d
 
-# Main function where we create menu and receive input
+
 def mainmenu():
+    """ Main function where we create menu and receive input """
+
     while True:
         selection = input("""
         
@@ -157,5 +175,6 @@ Please enter your choice: """)
             return False
         else:
             print('\n# 404 - Page cannot be found')
+
 
 mainmenu()
