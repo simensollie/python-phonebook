@@ -9,7 +9,7 @@
 
 ## homework 4
 #### issues
-- [ ] 
+- [ ] .
 #### helpful links
 - [Python Classes and Objects](https://www.w3schools.com/python/python_classes.asp)
 - [An Introduction to Classes and Inheritance (in Python)](http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/)
