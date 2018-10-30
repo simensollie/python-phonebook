@@ -1,4 +1,38 @@
+class PhoneBook(object):
+    def addContact(self):
 
+
+    def search(self):
+
+
+    def delete(self):
+
+
+    def listByType(self):
+
+
+
+class Contact(object):
+    def __init__(self, name, surname, phone):
+        self.name = name
+        self.surname = surname
+        self.phone = phone
+
+class BusinessContact(Contact):
+    def __init__(self, name, surname, phone, company, businessAdress):
+        Contact.__init__(self, name, surname, phone)
+        self.company = company
+        self.businessAddress = businessAdress
+
+class PersonalContact(Contact):
+    def __init__(self, name, surname, phone, homeAddress, relationship):
+        Contact.__init__(self, name, surname, phone)
+        self.homeAddress = homeAddress
+        self.relationship = relationship
+
+
+
+''' OLD IMPLEMENTATION
 
 """ Nested dictionary (phone book) with example entries. """
 phonebook = {0: {'First name': 'Matt', 'Last name': 'Damon', 'Phone': '95487621', 'Address': 'Celeb Street 34'},
