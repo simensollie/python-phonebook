@@ -2,10 +2,13 @@
 [Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
 ## homework 2
-
+#### issues
+#1 Menu option 8: List records with duplicate phone numbers not implemented
+#### helpful links
 
 ## homework 4
-###### helpful links
+#### issues
+#### helpful links
 - [Python Classes and Objects](https://www.w3schools.com/python/python_classes.asp)
 - [An Introduction to Classes and Inheritance (in Python)](http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/)
 - [Python class inherits object (class PhoneBook(**_object_**):)](http://stackoverflow.com/questions/4015417/ddg#9448136)
