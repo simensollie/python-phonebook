@@ -1,5 +1,5 @@
 # python-phonebook
-###### [README.md - Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
+###### README.md - [Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
 ## homework 2
 ###### issues
