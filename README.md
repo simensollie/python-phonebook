@@ -3,7 +3,7 @@
 
 ## homework 2
 ###### issues
-- [ ] [Menu option 8: List records with duplicate phone numbers not implemented](https://github.com/simensollie/python-phonebook/issues/1)
+- [ ] [Menu option 8 not implemented](https://github.com/simensollie/python-phonebook/issues/1)
 ###### helpful links
 - 
 
