@@ -18,4 +18,4 @@
 - [Introduction to classes in Python: Phone book](http://hplgit.github.io/primer.html/doc/pub/class/._class-readable002.html#sec:class:phonebook)
 - [Example: Phone book with special methods](http://hplgit.github.io/primer.html/doc/pub/class/._class-readable003.html#sec:class:phonebook2)
 - [A Beginner's Python Tutorial/Classes](https://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial/Classes)
-- [What does if __name__ == “__main__”: do?](https://stackoverflow.com/questions/419163/what-does-if-name-main-do#419185)
+- [What does if \__name\__ == “\__main\__”: do?](https://stackoverflow.com/questions/419163/what-does-if-name-main-do#419185)
