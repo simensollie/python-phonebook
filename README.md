@@ -19,3 +19,4 @@
 - [Example: Phone book with special methods](http://hplgit.github.io/primer.html/doc/pub/class/._class-readable003.html#sec:class:phonebook2)
 - [A Beginner's Python Tutorial/Classes](https://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial/Classes)
 - [What does if \_\_name\_\_ == "\_\_main\_\_": do?](https://stackoverflow.com/questions/419163/what-does-if-name-main-do#419185)
+- [Travelling salesman using brute-force and heuristics](https://codereview.stackexchange.com/questions/81865/travelling-salesman-using-brute-force-and-heuristics)
