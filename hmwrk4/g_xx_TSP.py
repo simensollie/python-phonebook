@@ -55,29 +55,29 @@ class Tour(object):
         :return:
         """
         print('')
-        tour_cities = self.cities # 1. A candidate set, from which a solution is created
+        tour_cities = self.cities  # 1. A candidate set, from which a solution is created
         travel_path = [city]
         travel_distance = 0
-        nr_of_cities_to_visit = len(tour_cities)
+        nr_of_cities_not_visited = len(tour_cities)
 
-        while nr_of_cities_to_visit > 1:
+        while nr_of_cities_not_visited > 1:
             tour_cities.remove(city)
-            nr_of_cities_to_visit -= 1
-            next_city = tour_cities[0] # 2. A selection function, which chooses the best candidate to be added to the solution
+            nr_of_cities_not_visited -= 1
+            next_city = tour_cities[0]  # 2. A selection function, which chooses the best candidate to be added to the solution
             distance_next_city = city.distanceTo(next_city)
 
-            for i in range(0, nr_of_cities_to_visit):
+            for i in range(0, nr_of_cities_not_visited):
                 distance = city.distanceTo(tour_cities[i])
-                if distance < distance_next_city: # 3. A feasibility function, that is used to determine if a candidate can be used to contribute to a solution
+                if distance < distance_next_city:  # 3. A feasibility function, that is used to determine if a candidate can be used to contribute to a solution
                     next_city = tour_cities[i]
                     distance_next_city = distance
 
-            travel_path.insert(len(travel_path), next_city) # 4. An objective function, which assigns a value to a solution, or a partial solution
+            travel_path.insert(len(travel_path), next_city)  # 4. An objective function, which assigns a value to a solution, or a partial solution
             travel_distance += distance_next_city
             print('# {} added to travel path.'.format(next_city))
             city = next_city
 
-        travel_path.insert(len(travel_path), travel_path[0]) # 5. A solution function, which will indicate when we have discovered a complete solution
+        travel_path.insert(len(travel_path), travel_path[0])  # 5. A solution function, which will indicate when we have discovered a complete solution
         travel_distance += city.distanceTo(travel_path[0])
 
         print('\nTRAVEL PATH:')
