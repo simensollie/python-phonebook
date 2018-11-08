@@ -10,102 +10,111 @@ Trondheim       6.24    9.34    13.36       -           10.12
 Kristiansand    4.3     7.45    3.33        10.17       -
 '''
 
+distance_matrix = [
+        [0, 6.47, 7.10, 6.10, 3.56],
+        [7.14, 0, 4.42, 9.30, 7.39],
+        [7, 4.48, 0, 13.37, 3.14],
+        [6.24, 9.34, 13.36, 0, 10.12],
+        [4.3, 7.45, 3.33, 10.17, 0]
+        ]
 
 class City(object):
     """
     Represent a city in the tour and must store the distances to the other cities.
     """
-    def __init__(self, oslo=None, bergen=None, stavanger=None, trondheim=None, kristiansand=None):
-        self.oslo = oslo
-        self.bergen = bergen
-        self.stavanger = stavanger
-        self.trondheim = trondheim
-        self.kristiansand = kristiansand
+    def __init__(self, index, name):
+        self.index = index
+        self.name = name
 
-    def distanceTo(self, destination):
+    def __str__(self):
+        return self.name
+
+    def distanceTo(self, city):
         """
         Takes a specific destination as an argument and returns the distance to that specific destination.
         :param destination:
         :return:
         """
-        if destination.casefold() is 'oslo':
-            return self.oslo
-        elif destination.casefold() is 'bergen':
-            return self.bergen
-        elif destination.casefold() is 'stavanger':
-            return self.stavanger
-        elif destination.casefold() is 'trondheim':
-            return self.trondheim
-        elif destination.casefold() is 'kristiansand':
-            return self.kristiansand
-        else:
-            return -1
+        return distance_matrix[self.index][city.index]
 
 
 class Tour(object):
     def __init__(self):
-        self.cities = {}
+        self.cities = []
 
-    def __add__(self, city, dist_oslo=None, dist_bergen=None, dist_stavanger=None,
-                dist_trondheim=None, dist_kristiansand=None):
-        self.cities[city] = City(oslo=dist_oslo, bergen=dist_bergen, stavanger=dist_stavanger,
-                                 trondheim=dist_trondheim, kristiansand=dist_kristiansand)
-
-    def addCity(self):
+    def addCity(self, city):
         """
         Allow the user to add a city to the tour.
         :return:
         """
-        # ISSUE: Does not loop over dict to check what cities is present in tour.
-        print("\nEnter the information of the city you'd like to add")
-        city = input('City: ')
-        dist_oslo = input('Distance to Oslo: ')
-        dist_bergen = input('Distance to Bergen: ')
-        dist_stavanger = input('Distance to Stavanger: ')
-        dist_trondheim = input('Distance to Trondheim: ')
-        dist_kristiansand = input('Distance to Kristiansand: ')
+        self.cities.append(city)
 
-        self.cities[city] = City(oslo=dist_oslo, bergen=dist_bergen, stavanger=dist_stavanger,
-                                 trondheim=dist_trondheim, kristiansand=dist_kristiansand)
-        print("\n# City added")
-
-    def findTour(self):
+    def findTour(self, city):
         """
         Find a tour and return the order of the cities to visit and the total distance.
         :return:
         """
-        return
+        print('')
+        tour_cities = self.cities
+        travel_path = [city]
+        travel_distance = 0
+        nr_of_cities_to_visit = len(tour_cities)
+
+        while nr_of_cities_to_visit > 1:
+            tour_cities.remove(city)
+            nr_of_cities_to_visit -= 1
+            next_city = tour_cities[0]
+            distance_next_city = city.distanceTo(next_city)
+
+            for i in range(0, nr_of_cities_to_visit):
+                distance = city.distanceTo(tour_cities[i])
+                if distance < distance_next_city:
+                    next_city = tour_cities[i]
+                    distance_next_city = distance
+
+            travel_path.insert(len(travel_path), next_city)
+            travel_distance += distance_next_city
+            print('# {} added to travel path.'.format(next_city))
+            city = next_city
+
+        travel_path.insert(len(travel_path), travel_path[0])
+        travel_distance += city.distanceTo(travel_path[0])
+
+        print('\nTRAVEL PATH:')
+        for i in range(0, len(travel_path)):
+            print(travel_path[i])
+
+        print('\nTRAVEL DISTANCE: ' + str(travel_distance))
 
 
 def main():
-    sandy_boy_prestige_tours = Tour()
-    sandy_boy_prestige_tours.__add__('Oslo', dist_bergen=6.47, dist_stavanger=7.10,
-                                     dist_trondheim=6.10, dist_kristiansand=3.56)
-    sandy_boy_prestige_tours.__add__('Bergen', dist_oslo=7.14, dist_stavanger=4.42,
-                                     dist_trondheim=9.30, dist_kristiansand=7.39)
-    sandy_boy_prestige_tours.__add__('Stavanger', dist_oslo=7.00, dist_bergen=4.48,
-                                     dist_trondheim=13.37, dist_kristiansand=3.14)
-    sandy_boy_prestige_tours.__add__('Trondheim', dist_oslo=6.24, dist_bergen=9.34,
-                                     dist_stavanger=13.36, dist_kristiansand=10.12)
-    sandy_boy_prestige_tours.__add__('Kristiansand', dist_oslo=4.30, dist_bergen=7.45,
-                                     dist_stavanger=3.33, dist_trondheim=10.17)
+    oslo = City(0, 'Oslo')
+    bergen = City(1, 'Bergen')
+    stavanger = City(2, 'Stavanger')
+    trondheim = City(3, 'Trondheim')
+    kristiansand = City(4, 'Kristiansand')
+
+    charter = Tour()
+    charter.addCity(oslo)
+    charter.addCity(bergen)
+    charter.addCity(stavanger)
+    charter.addCity(trondheim)
+    charter.addCity(kristiansand)
 
     while True:
         selection = input("""
 
     ----MAIN MENU----
-    1: Add city
-    2: Find tour
-    3: Explode into oblivion
+    1: Find tour starting in Oslo
+    2: Find tour starting in Bergen
 
     Please enter your choice: """)
 
         if selection == '1':
-            sandy_boy_prestige_tours.addCity()
+            charter.findTour(oslo)
+            return False
         elif selection == '2':
-            sandy_boy_prestige_tours.findTour()
-        elif selection == '3':
-            print('# BOOM!')
+            charter.findTour(bergen)
             return False
         else:
             print('\n# 404 - Page cannot be found')
